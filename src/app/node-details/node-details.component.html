@@ -8,10 +8,10 @@
       <mat-form-field>
         <mat-label>Status</mat-label>
         <!--<input matInput formControlName="nodeStatus">-->
-        <mat-icon *ngIf="nodeDetails.status == 'registered'" class="active-icon green-600 s-16">
+        <mat-icon *ngIf="nodeDetails['status'] == 'registered'" class="active-icon green-600 s-16">
           check
         </mat-icon>
-        <mat-icon *ngIf="nodeDetails.status == 'not_registered'" class="active-icon red-500 s-16">
+        <mat-icon *ngIf="nodeDetails['status'] == 'not_registered'" class="active-icon red-500 s-16">
           close
         </mat-icon>
       </mat-form-field>

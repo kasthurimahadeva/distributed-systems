@@ -21,11 +21,13 @@ export class AppComponent implements OnInit {
   }
 
   connect(): void {
-    const port = window.location.port;
-    const url = 'http://localhost:' + port + '/stream';
+    // const port = window.location.port;
+    // const url = 'http://localhost:' + port + '/stream';
+    const url = 'http://localhost:8080/stream';
     const source = new EventSource(url);
     source.addEventListener('message', message => {
       this.wholeDetails = JSON.parse(message['data']);
+      console.log(JSON.stringify(this.wholeDetails));
     });
   }
 
