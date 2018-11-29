@@ -4,15 +4,18 @@ import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatListModule, MatSidenavModule, MatToolbarModule} from '@angular/material';
+import {MatButtonModule, MatFormFieldModule, MatInputModule, MatListModule, MatSidenavModule, MatToolbarModule} from '@angular/material';
 import {MatIconModule} from '@angular/material/icon';
 import {SearchComponent} from './search/search.component';
 import {HttpClientModule} from '@angular/common/http';
+import { NodeDetailsComponent } from './node-details/node-details.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
+    NodeDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,11 +26,15 @@ import {HttpClientModule} from '@angular/common/http';
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule,
 
     HttpClientModule
   ],
   exports: [
-    SearchComponent
+    SearchComponent,
+    NodeDetailsComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

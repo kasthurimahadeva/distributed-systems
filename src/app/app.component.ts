@@ -9,6 +9,7 @@ import {DetailsModel} from './details.model';
 export class AppComponent implements OnInit {
   title = 'distributed-systems';
   wholeDetails: DetailsModel;
+  nodeDetails: Object;
   constructor(
   ) {
 
@@ -16,6 +17,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.connect();
+    this.nodeDetails = this.wholeDetails['nodeDetails'];
   }
 
   connect(): void {
