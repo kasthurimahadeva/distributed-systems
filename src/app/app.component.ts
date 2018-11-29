@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {DetailsModel} from './details.model';
 
 @Component({
   selector: 'app-root',
@@ -7,14 +8,23 @@ import {Component, OnInit} from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'distributed-systems';
-  hostName: string;
-
+  wholeDetails: DetailsModel;
   constructor(
   ) {
 
   }
 
   ngOnInit(): void {
+    this.connect();
+  }
+
+  connect(): void {
+    const port = window.location.port;
+    const url = 'http://localhost:' + port + '/stream';
+    const source = new EventSource(url);
+    source.addEventListener('message', message => {
+      this.wholeDetails = JSON.parse(message['data']);
+    });
   }
 
 }
