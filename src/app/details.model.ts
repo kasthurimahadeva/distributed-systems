@@ -1,4 +1,19 @@
 export class DetailsModel {
+  'files': Array<{
+  'fileName': string;
+  'fileSize': string;
+  }>;
+  'logs': Array<{
+    'timeStamp': string;
+    'sender': string;
+    'receiver': string;
+    'protocol': string;
+    'message': string;
+  }>;
+  'neighbours': Array<{
+    'ipAddress': string;
+    'udpPort': string;
+  }>;
   'nodeDetails': {
     'bootstrapServerAddress': string;
     'status': string;
@@ -6,19 +21,4 @@ export class DetailsModel {
     'udpPort': string;
     'tcpPort': string;
   };
-  'logs': {
-    'timeStamp': string;
-    'sender': string;
-    'receiver': string;
-    'protocol': string;
-    'message': string;
-  };
-  'neighbours': {
-    'ip_address': string;
-    'udp_port': string;
-  };
-  'files': Array<{
-    'file_name': string;
-    'size': string;
-  }>;
 }
