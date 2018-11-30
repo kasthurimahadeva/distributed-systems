@@ -4,18 +4,30 @@ import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatFormFieldModule, MatInputModule, MatListModule, MatSidenavModule, MatToolbarModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatListModule,
+  MatSidenavModule,
+  MatTableModule,
+  MatToolbarModule
+} from '@angular/material';
 import {MatIconModule} from '@angular/material/icon';
 import {SearchComponent} from './search/search.component';
 import {HttpClientModule} from '@angular/common/http';
 import { NodeDetailsComponent } from './node-details/node-details.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import { NeighboursTableComponent } from './neighbours-table/neighbours-table.component';
+import {AppComponentService} from './app-component.service';
+import {AppComponentResolver} from './app-component.resolver';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
     NodeDetailsComponent,
+    NeighboursTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,14 +41,17 @@ import {ReactiveFormsModule} from '@angular/forms';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatInputModule,
+    MatTableModule,
 
     HttpClientModule
   ],
   exports: [
     SearchComponent,
-    NodeDetailsComponent
+    NodeDetailsComponent,
+    NeighboursTableComponent
   ],
-  providers: [],
+  providers: [AppComponentService,
+    AppComponentResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule {

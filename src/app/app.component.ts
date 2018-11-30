@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {DetailsModel} from './details.model';
+import {HttpClient} from '@angular/common/http';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,25 +12,30 @@ export class AppComponent implements OnInit {
   title = 'distributed-systems';
   wholeDetails: DetailsModel;
   nodeDetails: Object;
-  constructor(
+  neighboursDetails: Array<Object>;
+
+  constructor(private httpClient: HttpClient,
+              private route: ActivatedRoute
   ) {
 
   }
 
   ngOnInit(): void {
-    this.connect();
-    this.nodeDetails = this.wholeDetails['nodeDetails'];
+    this.wholeDetails = this.route.snapshot.data['details'];
+    this.getTaskDetails();
+    console.log(JSON.stringify(this.wholeDetails));
+    this.route.params.subscribe(
+      params => this.getTaskDetails()
+    );
   }
 
-  connect(): void {
-    // const port = window.location.port;
-    // const url = 'http://localhost:' + port + '/stream';
-    const url = 'http://localhost:8080/stream';
-    const source = new EventSource(url);
-    source.addEventListener('message', message => {
-      this.wholeDetails = JSON.parse(message['data']);
-      console.log(JSON.stringify(this.wholeDetails));
-    });
+  getTaskDetails(): void {
+    this.httpClient.get<DetailsModel>('http://localhost:8080/data').subscribe(
+      data => this.wholeDetails = data
+    );
+    if (this.wholeDetails !== undefined) {
+      this.nodeDetails = this.wholeDetails['nodeDetails'];
+      this.neighboursDetails = this.wholeDetails['neighbours'];
+    }
   }
-
 }
