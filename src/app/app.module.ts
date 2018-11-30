@@ -20,6 +20,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {NeighboursTableComponent} from './neighbours-table/neighbours-table.component';
 import {AppComponentService} from './app-component.service';
 import {AppComponentResolver} from './app-component.resolver';
+import {FilesComponent} from './files/files.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import {AppComponentResolver} from './app-component.resolver';
     SearchComponent,
     NodeDetailsComponent,
     NeighboursTableComponent,
+    FilesComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,13 +44,15 @@ import {AppComponentResolver} from './app-component.resolver';
     ReactiveFormsModule,
     MatInputModule,
     MatTableModule,
+    FlexLayoutModule,
 
     HttpClientModule
   ],
   exports: [
     SearchComponent,
     NodeDetailsComponent,
-    NeighboursTableComponent
+    NeighboursTableComponent,
+    FilesComponent
   ],
   providers: [AppComponentService,
     AppComponentResolver],

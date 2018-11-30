@@ -14,3 +14,9 @@ mat-cell {
   display: flex;
   overflow: auto;
 }
+
+
+.fileName {
+  width: 200px;
+}
+

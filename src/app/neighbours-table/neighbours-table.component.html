@@ -1,4 +1,4 @@
-<table mat-table [dataSource]="" class="mat-elevation-z8">
+<table mat-table [dataSource]="neighboursDetails" class="mat-elevation-z8">
 
   <ng-container matColumnDef="id">
     <mat-header-cell *matHeaderCellDef>No.</mat-header-cell>
@@ -24,7 +24,7 @@
   <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
 
   <mat-row *matRowDef="let neighbour; columns: displayedColumns;"
-           class="task" matRipple>
+           matRipple>
   </mat-row>
 </table>
 
