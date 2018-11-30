@@ -9,12 +9,13 @@ import {HttpClient} from '@angular/common/http';
 })
 export class NeighboursTableComponent implements OnInit {
   neighboursDetails: Neighbour[];
-  displayedColumns: string[] = ['ipAddress', 'udpPort'];
+  displayedColumns: string[] = ['id', 'ipAddress', 'udpPort'];
 
   constructor(private httpClient: HttpClient) {
   }
 
   ngOnInit() {
+    this.getNeighbours();
   }
 
   getNeighbours(): void {
