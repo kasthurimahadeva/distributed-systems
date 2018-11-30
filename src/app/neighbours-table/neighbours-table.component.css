@@ -1,0 +1,15 @@
+table {
+  width: 30%;
+  margin-top: 1%;
+  table-layout: fixed;
+  max-height: 200px;
+}
+
+mat-header-cell {
+  display: block;
+}
+
+mat-cell {
+  display: block;
+  overflow: auto;
+}
