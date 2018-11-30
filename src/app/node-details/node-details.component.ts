@@ -1,22 +1,29 @@
-import {Component, Input} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {NodeDetails} from '../models/node-details.model';
 
 @Component({
   selector: 'app-node-details',
   templateUrl: './node-details.component.html',
   styleUrls: ['./node-details.component.css']
 })
-export class NodeDetailsComponent {
+export class NodeDetailsComponent implements OnInit {
+  nodeDetails: NodeDetails;
 
-  @Input() nodeDetails: Object;
-  constructor() { }
+  constructor(private httpClient: HttpClient) {
+  }
 
-  nodeDetailsForm = new FormGroup({
-    bootstrap: new FormControl({value: this.nodeDetails['bootstrapServerAddress'], disabled: true}),
-    nodeStatus: new FormControl({value: this.nodeDetails['status'], disabled: true}),
-    ipAddress: new FormControl({value: this.nodeDetails['ipAddress'], disabled: true}),
-    udpPort: new FormControl({value: this.nodeDetails['udpPort'], disabled: true}),
-    tcpPort: new FormControl({value: this.nodeDetails['tcpPort'], disabled: true})
-  });
+  getNodeDetails(): void {
+    // this.httpClient.get<Neighbour[]>('http://localhost:' + window.location.port + '/node-details').subscribe(
+    //   data => this.neighboursDetails = data
+    // );
+    this.httpClient.get<NodeDetails>('http://localhost:8080/node-details').subscribe(
+      data => this.nodeDetails = data
+    );
+  }
+
+  ngOnInit(): void {
+    this.getNodeDetails();
+  }
 
 }

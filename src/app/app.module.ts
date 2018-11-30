@@ -1,7 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
-import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
@@ -16,9 +15,9 @@ import {
 import {MatIconModule} from '@angular/material/icon';
 import {SearchComponent} from './search/search.component';
 import {HttpClientModule} from '@angular/common/http';
-import { NodeDetailsComponent } from './node-details/node-details.component';
+import {NodeDetailsComponent} from './node-details/node-details.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import { NeighboursTableComponent } from './neighbours-table/neighbours-table.component';
+import {NeighboursTableComponent} from './neighbours-table/neighbours-table.component';
 import {AppComponentService} from './app-component.service';
 import {AppComponentResolver} from './app-component.resolver';
 
@@ -32,7 +31,7 @@ import {AppComponentResolver} from './app-component.resolver';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule,
+    // AppRoutingModule,
     MatButtonModule,
     MatIconModule,
     MatToolbarModule,

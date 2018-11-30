@@ -1,32 +1,36 @@
-<div class="container">
-  <div class="row">
-    <form [formGroup]="nodeDetailsForm">
-      <mat-form-field>
-        <mat-label>BS Address</mat-label>
-        <input matInput formControlName="bootstrap">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Status</mat-label>
-        <!--<input matInput formControlName="nodeStatus">-->
-        <mat-icon *ngIf="nodeDetails['status'] == 'registered'" class="active-icon green-600 s-16">
-          check
-        </mat-icon>
-        <mat-icon *ngIf="nodeDetails['status'] == 'not_registered'" class="active-icon red-500 s-16">
-          close
-        </mat-icon>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>IP Address</mat-label>
-        <input matInput formControlName="ipAddress">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>UDP Port</mat-label>
-        <input matInput formControlName="udpPort">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>TCP Port</mat-label>
-        <input matInput formControlName="tcpPort">
-      </mat-form-field>
-    </form>
-  </div>
+<!--<div class="container">-->
+  <!--<div class="row">-->
+    <!--<form [formGroup]="nodeDetailsForm">-->
+      <!--<mat-form-field>-->
+        <!--<mat-label>BS Address</mat-label>-->
+        <!--<input matInput formControlName="bootstrap">-->
+      <!--</mat-form-field>-->
+      <!--<mat-form-field>-->
+        <!--<mat-label>Status</mat-label>-->
+        <!--&lt;!&ndash;<input matInput formControlName="nodeStatus">&ndash;&gt;-->
+        <!--<mat-icon *ngIf="nodeDetails['status'] == 'registered'" class="active-icon green-600 s-16">-->
+          <!--check-->
+        <!--</mat-icon>-->
+        <!--<mat-icon *ngIf="nodeDetails['status'] == 'not_registered'" class="active-icon red-500 s-16">-->
+          <!--close-->
+        <!--</mat-icon>-->
+      <!--</mat-form-field>-->
+      <!--<mat-form-field>-->
+        <!--<mat-label>IP Address</mat-label>-->
+        <!--<input matInput formControlName="ipAddress">-->
+      <!--</mat-form-field>-->
+      <!--<mat-form-field>-->
+        <!--<mat-label>UDP Port</mat-label>-->
+        <!--<input matInput formControlName="udpPort">-->
+      <!--</mat-form-field>-->
+      <!--<mat-form-field>-->
+        <!--<mat-label>TCP Port</mat-label>-->
+        <!--<input matInput formControlName="tcpPort">-->
+      <!--</mat-form-field>-->
+    <!--</form>-->
+  <!--</div>-->
+<!--</div>-->
+
+<div>
+  <span>{{nodeDetails.bootstrapServerAddress}}</span>
 </div>
