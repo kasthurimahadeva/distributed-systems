@@ -4,7 +4,6 @@ import {FuseTranslationLoaderService} from '@fuse/services/translation-loader.se
 import {FuseConfigService} from '../../../@fuse/services/config.service';
 import {fuseAnimations} from '../../../@fuse/animations';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs/Rx';
 
 @Component({
     selector: 'sample',
@@ -15,12 +14,14 @@ import {Observable} from 'rxjs/Rx';
 })
 export class SampleComponent {
 
-    input: string;
+    input = '';
 
     /**
      * Constructor
      *
      * @param {FuseTranslationLoaderService} _fuseTranslationLoaderService
+     * @param _fuseConfigService
+     * @param httpClient
      */
     constructor(
         private _fuseTranslationLoaderService: FuseTranslationLoaderService,
@@ -50,36 +51,39 @@ export class SampleComponent {
         };
     }
 
-    search() {
-        this.httpClient.post('http://localhost:8080/search', this.input).subscribe(
-            data => console.log(data),
-            error => console.log(error));
-
-        // this.httpClient.post('http://localhost:' + window.location.port + '/search', {value: this.input}).subscribe(
-        //     data => console.log(data),
-        //     error => console.log(error));
-    }
-
-    addFiles() {
-        this.httpClient.post('http://localhost:8080/files/add', this.input).subscribe(
-            data => console.log(data),
-            error => console.log(error));
-        // this.httpClient.post('http://localhost:' + window.location.port + '/files/add', {value: this.input}).subscribe(
-        //     data => console.log(data),
-        //     error => console.log(error));
-    }
-
-    deleteFiles() {
-        this.httpClient.post('http://localhost:8080/files/delete', this.input).subscribe(
-            data => console.log(data),
-            error => console.log(error));
-        // this.httpClient.post('http://localhost:' + window.location.port + '/files/delete', {value: this.input}).subscribe(
+    search(): void {
+        // this.httpClient.post('http://localhost:8080/search', this.input).subscribe(
         //     data => console.log(data),
         //     error => console.log(error));
 
+        this.httpClient.post('http://localhost:' + window.location.port + '/search', {value: this.input}).subscribe(
+            data => console.log(data),
+            error => console.log(error));
+        this.input = '';
     }
 
-    getInput(event: any) {
+    addFiles(): void {
+        // this.httpClient.post('http://localhost:8080/files/add', this.input).subscribe(
+        //     data => console.log(data),
+        //     error => console.log(error));
+        this.httpClient.post('http://localhost:' + window.location.port + '/files/add', {value: this.input}).subscribe(
+            data => console.log(data),
+            error => console.log(error));
+        this.input = '';
+    }
+
+    deleteFiles(): void {
+    //     this.httpClient.post('http://localhost:8080/files/delete', this.input).subscribe(
+    //         data => console.log(data),
+    //         error => console.log(error));
+        this.httpClient.post('http://localhost:' + window.location.port + '/files/delete', {value: this.input}).subscribe(
+            data => console.log(data),
+            error => console.log(error));
+        this.input = '';
+
+    }
+
+    getInput(event: any): void {
         this.input = event.target.value;
     }
 }

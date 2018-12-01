@@ -14,17 +14,17 @@ export class FilesComponent implements OnInit {
   constructor(private httpClient: HttpClient) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getFilesDetails();
   }
 
   getFilesDetails(): void {
-    // this.httpClient.get<Neighbour[]>('http://localhost:' + window.location.port + '/files').subscribe(
-    //   data => this.neighboursDetails = data
-    // );
-    this.httpClient.get<File[]>('http://localhost:8080/files').subscribe(
+    this.httpClient.get<File[]>('http://localhost:' + window.location.port + '/files').subscribe(
       data => this.filesList = data
     );
+    // this.httpClient.get<File[]>('http://localhost:8080/files').subscribe(
+    //   data => this.filesList = data
+    // );
   }
 
 }

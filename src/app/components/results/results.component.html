@@ -7,12 +7,16 @@
     <th>
         URL
     </th>
+    <th>
+        Action
+    </th>
 
     </thead>
     <tbody>
     <tr *ngFor="let result of results">
         <td>{{result?.fileName}}</td>
         <td><a href="{{result?.url}}" target="_blank">{{result?.url}}</a></td>
+        <td><button mat-raised-button (click)="addFile(result?.fileName)">Download</button> </td>
     </tr>
     </tbody>
 </table>

@@ -15,7 +15,7 @@
             <div class="search-wrapper mx-32 mx-md-0">
                 <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
                     <mat-icon>search</mat-icon>
-                    <input (keyup)="getInput($event)" placeholder="search/add/delete file" />
+                    <input (keyup)="getInput($event)" [value]="input" placeholder="search/add/delete file" />
                 </div>
             </div>
 

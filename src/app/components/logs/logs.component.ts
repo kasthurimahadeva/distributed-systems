@@ -23,23 +23,24 @@ export class LogsComponent implements OnInit {
         // this.httpClient.get<Log[]>('http://localhost:' + window.location.port + '/log').subscribe(
         //   data => this.logs = data
         // );
+        // Observable.interval(50)
+        //     .switchMap(() => this.httpClient.get<Log[]>('http://localhost:8080/log'))
+        //     .subscribe(
+        //         data => {
+        //             this.logs = data.reverse();
+        //             console.log(this.logs);
+        //         },
+        //         error => console.log(error)
+        //     );
+
         Observable.interval(50)
-            .switchMap(() => this.httpClient.get<Log[]>('http://localhost:8080/log'))
+            .switchMap(() => this.httpClient.get<Log[]>('http://localhost:' + window.location.port + '/log'))
             .subscribe(
                 data => {
                     this.logs = data.reverse();
                 },
                 error => console.log(error)
             );
-
-        // Observable.interval(50)
-        //     .switchMap(() => this.httpClient.get<Log[]>('http://localhost:' + window.location.port + '/log'))
-        //     .subscribe(
-        //         data => {
-        //             this.logs = data.reverse();
-        //         },
-        //         error => console.log(error)
-        //     );
 
     }
 }

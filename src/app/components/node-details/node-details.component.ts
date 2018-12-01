@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {NodeDetails} from '../../models/node-details.model';
 import {Observable} from 'rxjs';
-import {Log} from '../../models/log.model';
 
 @Component({
     selector: 'app-node-details',
@@ -27,22 +26,22 @@ export class NodeDetailsComponent implements OnInit {
         //     data => this.nodeDetails = data
         // );
 
-        Observable.interval(50)
-            .switchMap(() => this.httpClient.get<NodeDetails>('http://localhost:8080/node-details'))
-            .subscribe(
-                data => {
-                    this.nodeDetails = data;
-                },
-                error => console.log(error)
-            );
-
         // Observable.interval(50)
-        //     .switchMap(() => this.httpClient.get<NodeDetails>('http://localhost:' + window.location.port + '/node-details'))
+        //     .switchMap(() => this.httpClient.get<NodeDetails>('http://localhost:8080/node-details'))
         //     .subscribe(
         //         data => {
         //             this.nodeDetails = data;
         //         },
         //         error => console.log(error)
         //     );
+
+        Observable.interval(50)
+            .switchMap(() => this.httpClient.get<NodeDetails>('http://localhost:' + window.location.port + '/node-details'))
+            .subscribe(
+                data => {
+                    this.nodeDetails = data;
+                },
+                error => console.log(error)
+            );
     }
 }

@@ -1,5 +1,5 @@
 export class Log {
-    'id': number;
+  'id': string;
   'timestamp': string;
   'sender': string;
   'receiver': string;
