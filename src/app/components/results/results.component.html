@@ -11,8 +11,8 @@
     </thead>
     <tbody>
     <tr *ngFor="let result of results">
-        <td>{{result?.ipAddress}}</td>
-        <td>{{result?.udpPort}}</td>
+        <td>{{result?.fileName}}</td>
+        <td><a href="{{result?.url}}" target="_blank">{{result?.url}}</a></td>
     </tr>
     </tbody>
 </table>

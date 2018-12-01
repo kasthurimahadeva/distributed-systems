@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Neighbour} from '../../models/neighbour.model';
 import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {Log} from '../../models/log.model';
 
 @Component({
     selector: 'app-neighbours-table',
@@ -23,9 +25,27 @@ export class NeighboursTableComponent implements OnInit {
         // this.httpClient.get<Neighbour[]>('http://localhost:' + window.location.port + '/neighbours').subscribe(
         //   data => this.neighboursDetails = data
         // );
-        this.httpClient.get<Neighbour[]>('http://localhost:8080/neighbours').subscribe(
-            data => this.neighboursDetails = data
-        );
+        // this.httpClient.get<Neighbour[]>('http://localhost:8080/neighbours').subscribe(
+        //     data => this.neighboursDetails = data
+        // );
+
+        Observable.interval(50)
+            .switchMap(() => this.httpClient.get<Neighbour[]>('http://localhost:8080/neighbours'))
+            .subscribe(
+                data => {
+                    this.neighboursDetails = data;
+                },
+                error => console.log(error)
+            );
+
+        // Observable.interval(50)
+        //     .switchMap(() => this.httpClient.get<Neighbour[]>('http://localhost:' + window.location.port + '/neighbours'))
+        //     .subscribe(
+        //         data => {
+        //             this.neighboursDetails = data.reverse();
+        //         },
+        //         error => console.log(error)
+        //     );
     }
 
 }
