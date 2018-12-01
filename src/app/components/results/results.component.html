@@ -1,0 +1,18 @@
+<table>
+    <caption>Search Results</caption>
+    <thead>
+    <th>
+        File Name
+    </th>
+    <th>
+        URL
+    </th>
+
+    </thead>
+    <tbody>
+    <tr *ngFor="let result of results">
+        <td>{{result?.ipAddress}}</td>
+        <td>{{result?.udpPort}}</td>
+    </tr>
+    </tbody>
+</table>

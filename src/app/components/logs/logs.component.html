@@ -1,0 +1,23 @@
+<table>
+    <caption>
+        Log History
+    </caption>
+    <thead>
+        <tr>
+            <th>Time Stamp</th>
+            <th>Sender</th>
+            <th>Receiver</th>
+            <th>Protocol</th>
+            <th>Message</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let log of logs">
+            <td>{{ log.timestamp | date: 'shortTime' }}</td>
+            <td>{{ log.sender }}</td>
+            <td>{{ log.receiver }}</td>
+            <td>{{ log.protocol }}</td>
+            <td>{{ log.message }}</td>
+        </tr>
+    </tbody>
+</table>

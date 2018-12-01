@@ -1,0 +1,48 @@
+<!--<table mat-table [dataSource]="neighboursDetails" class="mat-elevation-z8">-->
+
+<!--<ng-container matColumnDef="id">-->
+<!--<mat-header-cell *matHeaderCellDef>No.</mat-header-cell>-->
+<!--<mat-cell *matCellDef="let i = index">-->
+<!--<p class="text-truncate">{{i +1}}</p>-->
+<!--</mat-cell>-->
+<!--</ng-container>-->
+
+<!--<ng-container matColumnDef="ipAddress">-->
+<!--<mat-header-cell *matHeaderCellDef>IP Address</mat-header-cell>-->
+<!--<mat-cell *matCellDef="let neighbour">-->
+<!--<p class="text-truncate">{{neighbour.ipAddress}}</p>-->
+<!--</mat-cell>-->
+<!--</ng-container>-->
+
+<!--<ng-container matColumnDef="udpPort">-->
+<!--<mat-header-cell *matHeaderCellDef>UDP Port</mat-header-cell>-->
+<!--<mat-cell *matCellDef="let neighbour">-->
+<!--<p class="text-truncate">{{neighbour.udpPort}}</p>-->
+<!--</mat-cell>-->
+<!--</ng-container>-->
+
+<!--<mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>-->
+
+<!--<mat-row *matRowDef="let neighbour; columns: displayedColumns;"-->
+<!--matRipple>-->
+<!--</mat-row>-->
+<!--</table>-->
+
+<table>
+    <caption>Routing Table</caption>
+    <thead>
+    <th>
+        IP_Address
+    </th>
+    <th>
+        UDP_Port
+    </th>
+
+    </thead>
+    <tbody>
+        <tr *ngFor="let neighbour of neighboursDetails">
+            <td>{{neighbour.ipAddress}}</td>
+            <td>{{neighbour.udpPort}}</td>
+        </tr>
+    </tbody>
+</table>
