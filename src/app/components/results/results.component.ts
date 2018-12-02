@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ResultModel} from '../../models/result.model';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {environment} from '../../../environments/environment';
 
 @Component({
     selector: 'app-results',
@@ -14,49 +15,44 @@ export class ResultsComponent implements OnInit {
     constructor(
         private httpClient: HttpClient
     ) {
-    }
-
-    ngOnInit(): void {
         this.getResults();
     }
 
+    ngOnInit(): void {
+    }
+
     getResults(): void {
-        // this.httpClient.get<ResultModel[]>('http://localhost:8080/results').subscribe(
-        //     data => this.results = data,
-        //     error => console.log(error)
-        // );
-
-        // this.httpClient.get<ResultModel[]>('http://localhost:' + window.location.port + '/results').subscribe(
-        //     data => this.results = data,
-        //     error => console.log(error)
-        // );
-
-        // Observable.interval(50)
-        //     .switchMap(() => this.httpClient.get<ResultModel[]>('http://localhost:8080/results'))
-        //     .subscribe(
-        //         data => {
-        //             this.results = data;
-        //         },
-        //         error => console.log(error)
-        //     );
-
-        Observable.interval(50)
-            .switchMap(() => this.httpClient.get<ResultModel[]>('http://localhost:' + window.location.port + '/results'))
-            .subscribe(
-                data => {
-                    this.results = data;
-                },
-                error => console.log(error)
-            );
+        if (environment.testing) {
+            Observable.interval(50)
+                .switchMap(() => this.httpClient.get<ResultModel[]>('http://localhost:8080/results'))
+                .subscribe(
+                    data => {
+                        this.results = data;
+                    },
+                    error => console.log(error)
+                );
+        } else {
+            Observable.interval(50)
+                .switchMap(() => this.httpClient.get<ResultModel[]>('http://localhost:' + window.location.port + '/results'))
+                .subscribe(
+                    data => {
+                        this.results = data;
+                    },
+                    error => console.log(error)
+                );
+        }
     }
 
     addFile(fileName: string): void {
-        // this.httpClient.post('http://localhost:8080/files/add', fileName).subscribe(
-        //     data => console.log(data),
-        //     error => console.log(error));
-        this.httpClient.post('http://localhost:' + window.location.port + '/files/add', fileName).subscribe(
-            data => console.log(data),
-            error => console.log(error));
+        if (environment.testing) {
+            this.httpClient.post('http://localhost:8080/files/add', fileName).subscribe(
+                data => console.log(data),
+                error => console.log(error));
+        } else {
+            this.httpClient.post('http://localhost:' + window.location.port + '/files/add', fileName).subscribe(
+                data => console.log(data),
+                error => console.log(error));
+        }
     }
 
 }

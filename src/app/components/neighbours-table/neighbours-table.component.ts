@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Neighbour} from '../../models/neighbour.model';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {environment} from '../../../environments/environment';
 
 @Component({
     selector: 'app-neighbours-table',
@@ -14,37 +15,32 @@ export class NeighboursTableComponent implements OnInit {
     // displayedColumns: string[] = ['id', 'ipAddress', 'udpPort'];
 
     constructor(private httpClient: HttpClient) {
-    }
-
-    ngOnInit(): void {
         this.getNeighbours();
     }
 
+    ngOnInit(): void {
+    }
+
     getNeighbours(): void {
-        // this.httpClient.get<Neighbour[]>('http://localhost:' + window.location.port + '/neighbours').subscribe(
-        //   data => this.neighboursDetails = data
-        // );
-        // this.httpClient.get<Neighbour[]>('http://localhost:8080/neighbours').subscribe(
-        //     data => this.neighboursDetails = data
-        // );
-
-        // Observable.interval(50)
-        //     .switchMap(() => this.httpClient.get<Neighbour[]>('http://localhost:8080/neighbours'))
-        //     .subscribe(
-        //         data => {
-        //             this.neighboursDetails = data;
-        //         },
-        //         error => console.log(error)
-        //     );
-
-        Observable.interval(50)
-            .switchMap(() => this.httpClient.get<Neighbour[]>('http://localhost:' + window.location.port + '/neighbours'))
-            .subscribe(
-                data => {
-                    this.neighboursDetails = data.reverse();
-                },
-                error => console.log(error)
-            );
+        if (environment.testing) {
+            Observable.interval(50)
+                .switchMap(() => this.httpClient.get<Neighbour[]>('http://localhost:8080/neighbours'))
+                .subscribe(
+                    data => {
+                        this.neighboursDetails = data;
+                    },
+                    error => console.log(error)
+                );
+        } else {
+            Observable.interval(50)
+                .switchMap(() => this.httpClient.get<Neighbour[]>('http://localhost:' + window.location.port + '/neighbours'))
+                .subscribe(
+                    data => {
+                        this.neighboursDetails = data.reverse();
+                    },
+                    error => console.log(error)
+                );
+        }
     }
 
 }
