@@ -54,7 +54,7 @@ export class ResultsComponent implements OnInit {
         // this.httpClient.post('http://localhost:8080/files/add', fileName).subscribe(
         //     data => console.log(data),
         //     error => console.log(error));
-        this.httpClient.post('http://localhost:' + window.location.port + '/files/add', {value: fileName}).subscribe(
+        this.httpClient.post('http://localhost:' + window.location.port + '/files/add', fileName).subscribe(
             data => console.log(data),
             error => console.log(error));
     }

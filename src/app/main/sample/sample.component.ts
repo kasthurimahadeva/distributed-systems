@@ -56,7 +56,7 @@ export class SampleComponent {
         //     data => console.log(data),
         //     error => console.log(error));
 
-        this.httpClient.post('http://localhost:' + window.location.port + '/search', {value: this.input}).subscribe(
+        this.httpClient.post('http://localhost:' + window.location.port + '/search', this.input).subscribe(
             data => console.log(data),
             error => console.log(error));
         this.input = '';
@@ -66,7 +66,7 @@ export class SampleComponent {
         // this.httpClient.post('http://localhost:8080/files/add', this.input).subscribe(
         //     data => console.log(data),
         //     error => console.log(error));
-        this.httpClient.post('http://localhost:' + window.location.port + '/files/add', {value: this.input}).subscribe(
+        this.httpClient.post('http://localhost:' + window.location.port + '/files/add', this.input).subscribe(
             data => console.log(data),
             error => console.log(error));
         this.input = '';
@@ -76,7 +76,7 @@ export class SampleComponent {
     //     this.httpClient.post('http://localhost:8080/files/delete', this.input).subscribe(
     //         data => console.log(data),
     //         error => console.log(error));
-        this.httpClient.post('http://localhost:' + window.location.port + '/files/delete', {value: this.input}).subscribe(
+        this.httpClient.post('http://localhost:' + window.location.port + '/files/delete', this.input).subscribe(
             data => console.log(data),
             error => console.log(error));
         this.input = '';
