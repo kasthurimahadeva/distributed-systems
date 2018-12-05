@@ -28,6 +28,7 @@ export class NeighboursTableComponent implements OnInit {
                 .subscribe(
                     data => {
                         this.neighboursDetails = data;
+                        console.log(JSON.stringify(this.neighboursDetails));
                     },
                     error => console.log(error)
                 );

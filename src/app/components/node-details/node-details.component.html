@@ -1,5 +1,16 @@
+<!--<span id="status">-->
+    <!--<div fxLayout="row">-->
+        <!--<div fxFlex>-->
+            <!--Status : &nbsp;-->
+        <!--</div>-->
+        <!--<div fxFlex [ngClass]="nodeDetails?.status">-->
+            <!--{{nodeDetails?.status}}-->
+        <!--</div>-->
+    <!--</div>-->
+
+<!--</span>-->
+<span id = "status" [ngClass]="nodeDetails?.status">{{nodeDetails?.status}}</span>
 <span id="bootstrap">BS Address : {{nodeDetails?.bootstrapServerAddress}}</span>
-<span id="status">Status : {{nodeDetails?.status}}</span>
 <span id="ipAddress">IP Address : {{nodeDetails?.ipAddress}}</span>
 <span id="udpPort">UDP Port : {{nodeDetails?.udpPort}}</span>
 <span id="tcpPort">TCP Port : {{nodeDetails?.tcpPort}}</span>

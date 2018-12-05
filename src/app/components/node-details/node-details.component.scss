@@ -1,3 +1,20 @@
 span {
   margin-left: 5%;
+    font-weight: bold;
+}
+
+.registered {
+    color: darkblue;
+}
+
+.not_registered {
+    color: #000000;
+}
+
+.joined {
+    color: green;
+}
+
+.unregistered_and_disconnected {
+    color: darkred;
 }
