@@ -8,7 +8,7 @@
         URL
     </th>
     <th>
-        Hopes
+        Hops
     </th>
     <th>
         Action
@@ -18,9 +18,9 @@
     <tbody>
     <tr *ngFor="let result of results">
         <td>{{result?.fileName}}</td>
-        <td><a href="{{result?.url}}" target="_blank">{{result?.url}}</a></td>
-        <td>{{result?.hopes}}</td>
-        <td><button mat-raised-button (click)="addFile(result?.fileName)">Download</button> </td>
+        <td>{{result?.url}}</td>
+        <td>{{result?.hopCount}}</td>
+        <td><button mat-raised-button (click)="addFile(result?.fileName, result?.url)">Download</button> </td>
     </tr>
     </tbody>
 </table>
